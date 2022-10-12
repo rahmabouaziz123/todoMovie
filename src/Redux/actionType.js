@@ -1,0 +1,11 @@
+export const DELETEELEMENT="DELETEELEMENT"
+
+
+export const ADDMOVIE="ADDMOVIE"
+
+
+export const EDITMOVIE="EDITMOVIE"
+
+
+
+
