@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Modal from "react-modal";
@@ -8,14 +5,11 @@ import { useDispatch } from "react-redux";
 import { handelAdd } from "../Redux/action";
 import StarRatingp from "./StarRating";
 
-
-
 export const AddNiewMovie = () => {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [date, setDate] = useState("");
   const [rating, setRating] = useState("");
-
 
   const dispatch = useDispatch();
 
@@ -30,16 +24,14 @@ export const AddNiewMovie = () => {
       image,
       rating,
     };
-   
-   dispatch(handelAdd(theNiewMovie)) ;
-      
-    setDate('');
-    setImage('');
-    setName('');
-    setRating('');
-    closeModal()
-   
 
+    dispatch(handelAdd(theNiewMovie));
+
+    setDate("");
+    setImage("");
+    setName("");
+    setRating("");
+    closeModal();
   };
 
   const customStyles = {
@@ -66,29 +58,15 @@ export const AddNiewMovie = () => {
     <div>
       {/* <button onClick={openModal}  className="AddNewMovie">Add New Movie</button> */}
 
-      <Button  onClick={openModal}  variant="primary" className="AddNewMovie">Add New Movie</Button>
+      <Button onClick={openModal} variant="primary" className="AddNewMovie">
+        Add New Movie
+      </Button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
-        {/* <form>
-          <label> MovieTitre</label>
-          <input type="text" value={name} onChange={e=>setName(e.target.value)} />
-          <label> Movie Poster </label>
-         <input type="text" value={image} onChange={e=>setImage(e.target.value)} />
-         <label >  Movie Date</label>
-         <input type="date"  value={date} onChange={e=>setDate(e.target.value)} />
-         < StarRatingp />
-         <div> 
-          <button> Add</button>
-          <button> Cancel</button>
-         </div>
-         
-
-         </form> */}
-
         <Form className=" FormMovieAdd" onSubmit={handelSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>MovieTitre</Form.Label>
@@ -107,7 +85,6 @@ export const AddNiewMovie = () => {
               placeholder="Movie Poster"
               value={image}
               onChange={(e) => setImage(e.target.value)}
-              
             />
           </Form.Group>
 
@@ -122,9 +99,8 @@ export const AddNiewMovie = () => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-      < StarRatingp rating={rating} handelRating={handelRating} />
-      </Form.Group>
-        
+            <StarRatingp rating={rating} handelRating={handelRating} />
+          </Form.Group>
 
           <div className="btnForm">
             {" "}

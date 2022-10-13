@@ -1,16 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-import { useSelector } from 'react-redux';
-import { MovieList } from './Components/MovieList';
-import { AddNiewMovie } from './Components/AddNiewMovie';
+import logo from "./logo.svg";
+import "./App.css";
+import { useSelector } from "react-redux";
+import { MovieList } from "./Components/MovieList";
+import { AddNiewMovie } from "./Components/AddNiewMovie";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./pp.scss";
-import { Search } from './Components/Search';
-import { useState } from 'react';
+import { Search } from "./Components/Search";
+import { useState } from "react";
 function App() {
-
-
-  const tabMovie =useSelector(state=>state)
+  const tabMovie = useSelector((state) => state);
 
   //  console.log(tabMovie)
 
@@ -23,8 +21,6 @@ function App() {
   //
   const handelRating = (z) => setRating(z);
 
-
-
   return (
     <div className="App">
       <Search
@@ -33,12 +29,16 @@ function App() {
         handelRating={handelRating}
         handelSeartch={handelSeartch}
       />
-     
-       <MovieList tabMovie={tabMovie}    />
-       <AddNiewMovie/>
-   
 
-      
+      <MovieList
+        tabMovie={tabMovie.filter(
+          (el) =>
+            el.name.toLowerCase().includes(searching.toLowerCase()) &&
+            el.rating >= rating
+        )}
+      />
+
+      <AddNiewMovie />
     </div>
   );
 }
